@@ -6,15 +6,15 @@ source("R/04_extractData.R")
 source("R/05_transformData.R")
 source("R/06_visualzation.R")
 
-wd <- getwd()
-
 render(input = "R/99_flexDashboard.Rmd",
        flex_dashboard(theme = "bootstrap",
                       orientation = "rows",
                       vertical_layout = "scroll",
                       # logo = "logo",
+                      source_code = "embed",
+                      social = "twitter",
                       highlight = "kate"),
-       output_dir = wd,
+       output_dir = "html",
        output_file = paste(Sys.Date(), "_TrafficReport", ".html",
                            sep = ""))
 

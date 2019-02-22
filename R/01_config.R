@@ -26,4 +26,5 @@ for(package in listOfPackages){
 source("R/02_corporateDesign.R")
 
 # ** Global or Useful Variables -----
+set.seed <- 1234576
 # ** Tokens -----
