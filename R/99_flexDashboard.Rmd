@@ -4,6 +4,29 @@ title: "Traffic Report"
 
 Page 1
 =====================================  
+
+Row
+-------------------------------------
+
+### last Update
+
+```{r last_update_p1}
+# valueBox to display the date of the latest update
+# title indicating the month that is considered
+lastUpdateValue <- paste(lubridate::month(x      = Sys.Date() %m-% months(1), 
+                                          label  = TRUE,
+                                          abbr   = FALSE,
+                                          locale = "en_US.UTF-8"),
+                         lubridate::year(x = Sys.Date()),
+                         sep = " ")
+
+valueBox(value = lastUpdateValue,
+         color = primary,
+         icon = "glyphicon-calendar")
+```
+
+Row
+-------------------------------------
     
 Column {data-width=600}
 -------------------------------------
@@ -42,8 +65,9 @@ Row {data-height=400}
    
 ### Chart 2
 
-```{r}
-```   
+```{r overallVisits, echo = FALSE}
+valueBoxes(df, "Lights", "visits")
+```  
     
 ### Chart 3
 
