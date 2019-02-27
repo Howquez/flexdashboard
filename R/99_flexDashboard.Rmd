@@ -28,16 +28,11 @@ valueBox(value = lastUpdateValue,
 Row
 -------------------------------------
     
-Column {data-width=600}
--------------------------------------
-    
 ### Chart 1
     
 ```{r}
 ```
-   
-Column {data-width=400}
--------------------------------------
+
    
 ### Chart 2
 
@@ -52,7 +47,7 @@ Column {data-width=400}
 Page 2 {data-orientation=rows}
 =====================================     
    
-Row {data-height=600}
+Row
 -------------------------------------
 
 ### Chart 1
@@ -60,7 +55,7 @@ Row {data-height=600}
 ```{r}
 ```
 
-Row {data-height=400}
+Row
 -------------------------------------
    
 ### Chart 2
