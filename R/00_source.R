@@ -18,4 +18,4 @@ render(input = "R/99_flexDashboard.Rmd",
        output_file = paste(Sys.Date(), "_TrafficReport", ".html",
                            sep = ""))
 
-browseURL(paste(Sys.Date(), "_TrafficReport", ".html", sep = ""))
+browseURL(paste("html/", Sys.Date(), "_TrafficReport", ".html", sep = ""))
