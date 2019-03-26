@@ -4,7 +4,7 @@ rand_ints <- function(lower, upper,
                       size = duration){
         x <- NULL
         for(i in 1:times){
-                x <- c(x, sample(as.integer(lower/i):as.integer(upper/i),
+                x <- c(x, sample((lower%/%i):(upper%/%i),
                        size = size,
                        replace = TRUE))
         }
@@ -15,17 +15,25 @@ rand_ints <- function(lower, upper,
 formatK <- function(x){
         digits <- nchar(as.character(format(round(x), scientific=FALSE)))
         if(digits > 3 & digits < 7){
-                x <- round(x/1000, digits = 1)
-                x <- formatC(x, big.mark = ".", decimal.mark = ",")
-                x <- paste(x, "k", sep = " ")
+                paste(formatC(x = x/1000,
+                              digits = 1,
+                              format = "f",
+                              big.mark = ".",
+                              decimal.mark = ","),
+                      "k", 
+                      sep = " ")
                 
         }else if(digits >= 7){
-                x <- round(x/1000000, digits = 2)
-                x <- formatC(x, big.mark = ".", decimal.mark = ",")
-                x <- paste(x, "mio", sep = " ")
+                paste(formatC(x = x/1000000,
+                              digits = 1,
+                              format = "f",
+                              big.mark = ".",
+                              decimal.mark = ","),
+                      "mio", 
+                      sep = " ")
                 
         }else{
-                x <- x
+                x
         }
 }
 
@@ -78,7 +86,7 @@ formatS <- function(number){
 formatHeader <- function(title, df, variable){
         present <- df[df$date == last_month_1, variable]
         past    <- df[df$date == last_month_2, variable]
-        value   <- round((present / past -1) * 100, 
+        value   <- round((present / past - 1) * 100, 
                          digits = 1)
         ifelse(test = present >= past,
                yes  = paste("<b> <em>", title, "<br> </b> +", value, "%",
@@ -90,11 +98,11 @@ formatHeader <- function(title, df, variable){
 formatHeaderT <- function(title, df, variable){
         present <- df[df$date == last_month_1, variable]
         past    <- df[df$date == last_month_2, variable]
-        value <- formatT((present - past))
+        value <- formatT(abs(present - past))
         ifelse(test = present >= past,
                yes  = paste("<b> <em>", title, "<br> </b> +", value,
                             " to month before </em>", sep = ""),
-               no   = paste("<b> <em>", title, "<br> </b> ", value,
+               no   = paste("<b> <em>", title, "<br> </b> -", value,
                             " to month before </em>", sep = ""))
 }
 
