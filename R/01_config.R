@@ -1,9 +1,7 @@
 # Setup -----
-# install checkpoint for reproducibility
-# require(checkpoint) == TRUE
-# if(!("checkpoint" %in% installed.packages()[, "Package"])){
-#         install.packages("checkpoint")
-# }
+# ** Constants -----
+PUBLISHING_DATE <- "2019-02-15"
+
 # ** Packages -----
 listOfPackages <- c("checkpoint",
                     "rmarkdown",
@@ -34,7 +32,7 @@ if(!dir.exists("~/.checkpoint")){
         dir.create("~/.checkpoint")
 }
 
-checkpoint("2019-02-15")
+checkpoint(PUBLISHING_DATE)
 
 # ** CI -----
 source("R/02_corporateDesign.R")
