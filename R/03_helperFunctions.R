@@ -13,7 +13,7 @@ rand_ints <- function(lower, upper,
 
 # re-format numbers for Value Boxes -----
 formatK <- function(x){
-        digits <- nchar(as.character(format(round(x), scientific=FALSE)))
+        digits <- nchar(as.character(format(round(x), scientific = FALSE)))
         if(digits > 3 & digits < 7){
                 paste(formatC(x = x/1000,
                               digits = 1,

@@ -4,7 +4,7 @@ source("R/03_helperFunctions.R")
 source("R/04_simulateData.R")
 source("R/04_extractData.R")
 source("R/05_transformData.R")
-source("R/06_visualzation.R")
+source("R/06_visualization.R")
 
 render(input = "R/99_flexDashboard.Rmd",
        flex_dashboard(theme = "bootstrap",

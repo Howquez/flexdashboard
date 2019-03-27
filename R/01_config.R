@@ -1,6 +1,12 @@
 # Setup -----
+# install checkpoint for reproducibility
+# require(checkpoint) == TRUE
+# if(!("checkpoint" %in% installed.packages()[, "Package"])){
+#         install.packages("checkpoint")
+# }
 # ** Packages -----
-listOfPackages <- c("rmarkdown",
+listOfPackages <- c("checkpoint",
+                    "rmarkdown",
                     "knitr",
                     "flexdashboard",
                     "stringr",
@@ -10,8 +16,8 @@ listOfPackages <- c("rmarkdown",
                     "plotly",
                     "DT",
                     "data.table",
-                    "reshape",
-                    "devtools")
+                    # "devtools",
+                    "reshape")
 
 newPackages <- listOfPackages[!(listOfPackages %in% installed.packages()[, "Package"])]
 
@@ -23,9 +29,15 @@ for(package in listOfPackages){
         require(package, character.only = TRUE)
 }
 
+# ** Specify the snapshot date
+if(!dir.exists("~/.checkpoint")){
+        dir.create("~/.checkpoint")
+}
+
+checkpoint("2019-02-15")
+
 # ** CI -----
 source("R/02_corporateDesign.R")
-
 # ** Global or Useful Variables -----
 set.seed(1234576)
 START_DATE <- as.Date("2017-01-01")
